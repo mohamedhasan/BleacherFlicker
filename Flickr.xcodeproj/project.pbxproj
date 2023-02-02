@@ -14,6 +14,9 @@
 		E1DAAA93298BEA5A00FFE1A7 /* FlickrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAA92298BEA5A00FFE1A7 /* FlickrTests.swift */; };
 		E1DAAA9D298BEA5A00FFE1A7 /* FlickrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAA9C298BEA5A00FFE1A7 /* FlickrUITests.swift */; };
 		E1DAAA9F298BEA5A00FFE1A7 /* FlickrUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAA9E298BEA5A00FFE1A7 /* FlickrUITestsLaunchTests.swift */; };
+		E1DAAAB5298BFB1600FFE1A7 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAAB4298BFB1600FFE1A7 /* NetworkHandler.swift */; };
+		E1DAAAB7298BFF5100FFE1A7 /* APIHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAAB6298BFF5100FFE1A7 /* APIHandlerProtocol.swift */; };
+		E1DAAAB9298BFF5F00FFE1A7 /* ImagesAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAAB8298BFF5F00FFE1A7 /* ImagesAPIHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		E1DAAA98298BEA5A00FFE1A7 /* FlickrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DAAA9C298BEA5A00FFE1A7 /* FlickrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrUITests.swift; sourceTree = "<group>"; };
 		E1DAAA9E298BEA5A00FFE1A7 /* FlickrUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1DAAAB4298BFB1600FFE1A7 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		E1DAAAB6298BFF5100FFE1A7 /* APIHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandlerProtocol.swift; sourceTree = "<group>"; };
+		E1DAAAB8298BFF5F00FFE1A7 /* ImagesAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesAPIHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,7 @@
 		E1DAAAB0298BFA3F00FFE1A7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E1DAAAB4298BFB1600FFE1A7 /* NetworkHandler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -180,6 +187,8 @@
 		E1DAAAB2298BFA4D00FFE1A7 /* ImagesAPIHandler */ = {
 			isa = PBXGroup;
 			children = (
+				E1DAAAB6298BFF5100FFE1A7 /* APIHandlerProtocol.swift */,
+				E1DAAAB8298BFF5F00FFE1A7 /* ImagesAPIHandler.swift */,
 			);
 			path = ImagesAPIHandler;
 			sourceTree = "<group>";
@@ -322,7 +331,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1DAAA84298BEA5900FFE1A7 /* ContentView.swift in Sources */,
+				E1DAAAB7298BFF5100FFE1A7 /* APIHandlerProtocol.swift in Sources */,
 				E1DAAA82298BEA5900FFE1A7 /* FlickrApp.swift in Sources */,
+				E1DAAAB9298BFF5F00FFE1A7 /* ImagesAPIHandler.swift in Sources */,
+				E1DAAAB5298BFB1600FFE1A7 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,10 +490,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flickr/Preview Content\"";
-				DEVELOPMENT_TEAM = NB63UZX4SA;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -496,6 +508,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flickr.Flickr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -507,10 +520,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flickr/Preview Content\"";
-				DEVELOPMENT_TEAM = NB63UZX4SA;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -525,6 +538,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flickr.Flickr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
