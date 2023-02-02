@@ -94,9 +94,11 @@
 		E1DAAA80298BEA5900FFE1A7 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
+				E1DAAAAF298BFA2E00FFE1A7 /* Resources */,
+				E1DAAAAB298BF9F800FFE1A7 /* Core */,
+				E1DAAAAC298BFA0900FFE1A7 /* Modules */,
 				E1DAAA81298BEA5900FFE1A7 /* FlickrApp.swift */,
 				E1DAAA83298BEA5900FFE1A7 /* ContentView.swift */,
-				E1DAAA85298BEA5A00FFE1A7 /* Assets.xcassets */,
 				E1DAAA87298BEA5A00FFE1A7 /* Preview Content */,
 			);
 			path = Flickr;
@@ -125,6 +127,68 @@
 				E1DAAA9E298BEA5A00FFE1A7 /* FlickrUITestsLaunchTests.swift */,
 			);
 			path = FlickrUITests;
+			sourceTree = "<group>";
+		};
+		E1DAAAAB298BF9F800FFE1A7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E1DAAAB3298BFA8100FFE1A7 /* Models */,
+				E1DAAAB2298BFA4D00FFE1A7 /* ImagesAPIHandler */,
+				E1DAAAB0298BFA3F00FFE1A7 /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E1DAAAAC298BFA0900FFE1A7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E1DAAAAE298BFA2400FFE1A7 /* ImagesDetails */,
+				E1DAAAAD298BFA1B00FFE1A7 /* ImagesList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E1DAAAAD298BFA1B00FFE1A7 /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImagesList;
+			sourceTree = "<group>";
+		};
+		E1DAAAAE298BFA2400FFE1A7 /* ImagesDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImagesDetails;
+			sourceTree = "<group>";
+		};
+		E1DAAAAF298BFA2E00FFE1A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E1DAAA85298BEA5A00FFE1A7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E1DAAAB0298BFA3F00FFE1A7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E1DAAAB2298BFA4D00FFE1A7 /* ImagesAPIHandler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImagesAPIHandler;
+			sourceTree = "<group>";
+		};
+		E1DAAAB3298BFA8100FFE1A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
