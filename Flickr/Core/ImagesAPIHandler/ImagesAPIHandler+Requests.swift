@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension ImagesAPIHandler {
+extension FlickrPhotosAPIHandler {
     private func flickrRequest() -> URLRequest? {
         guard var url = URL(string: endPoint) else { return nil }
         url.append(queryItems: [
@@ -19,7 +19,7 @@ extension ImagesAPIHandler {
         return URLRequest(url: url)
     }
 
-    internal func searchImagesRequest(query: String) -> URLRequest? {
+    internal func searchPhotosRequest(query: String) -> URLRequest? {
         guard var request = flickrRequest() else { return nil }
         request.url?.append(queryItems: [
             URLQueryItem(name: "method", value: "flickr.photos.search"),
@@ -29,7 +29,7 @@ extension ImagesAPIHandler {
         return request
     }
 
-    internal func imageInfoRequest(photoId: String) -> URLRequest? {
+    internal func photoInfoRequest(photoId: String) -> URLRequest? {
         guard var request = flickrRequest() else { return nil }
         request.url?.append(queryItems: [
             URLQueryItem(name: "method", value: "flickr.photos.getSizes"),

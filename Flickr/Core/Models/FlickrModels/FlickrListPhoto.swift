@@ -1,5 +1,5 @@
 //
-//  FlickrListImage.swift
+//  FlickrListPhoto.swift
 //  Flickr
 //
 //  Created by Mohamed Hassan on 02/02/2023.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
-struct FlickrListImage: Codable, ListImageModelProtocol {
+struct FlickrListPhoto: Codable, ListMediaModelProtocol {
 
     let id: String
     let title: String

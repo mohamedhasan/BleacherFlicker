@@ -12,5 +12,5 @@ struct FlickrInfoResponse: Codable {
 }
 
 struct FlickrListResponseSizeModel: Codable {
-    let size: [FlickrImageInfo]
+    let size: [FlickrPhotoInfo]
 }

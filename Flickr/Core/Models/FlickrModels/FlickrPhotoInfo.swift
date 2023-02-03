@@ -1,5 +1,5 @@
 //
-//  FlickrImagenfo.swift
+//  FlickrPhotoInfo.swift
 //  Flickr
 //
 //  Created by Mohamed Hassan on 02/02/2023.
@@ -14,7 +14,7 @@ enum FlickrLabel: String {
     case Thumbnail = "Thumbnail"
 }
 
-class FlickrImageInfo: Codable, ImageInfoModelProtocol {
+class FlickrPhotoInfo: Codable, MediaInfoModelProtocol {
 
     let label: String
     let url: String
@@ -26,7 +26,7 @@ class FlickrImageInfo: Codable, ImageInfoModelProtocol {
 
 }
 
-extension FlickrImageInfo {
+extension FlickrPhotoInfo {
     var imagePublisher: AnyPublisher<UIImage, URLError>? {
         get {
             //TODO: create a custom request with caching
