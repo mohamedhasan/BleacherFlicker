@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FlickrApp: App {
+    init() {
+        AppDesign.configureDesign()
+    }
+
     var body: some Scene {
         WindowGroup {
-            let viewModel = PhotosViewModel(mediaHandler: FlickrPhotosAPIHandler(), pageSize: 5)
+            let viewModel = PhotosViewModel(mediaHandler: FlickrPhotosAPIHandler(), pageSize: 25)
             PhotosView(viewModel: viewModel)
         }
     }

@@ -12,22 +12,29 @@ import Combine
 struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
 
     @ObservedObject var viewModel: PhotosViewModel<MediaHandler>
+    @State private var searchText = ""
 
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .center) {
-                List {
-                    Section() {
+                VStack(alignment: .leading) {
+                    HStack {
+                        TextField(LocalizedStringKey("Type to search..."), text: $searchText)
+                            .padding(8)
+                            .cornerRadius(4)
+                            .background(.blue)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .submitLabel(.search)
+                    }
+                    List {
                         ForEach(viewModel.mediaList) { media in
                             let infoViewModel = viewModel.mediaInfoViewModel(media)
                             PhotoListItem<MediaHandler>(viewModel: infoViewModel)
                         }
                     }
+                    .listStyle(.insetGrouped)
                 }
+                .onSubmit
+                { viewModel.searchMedia(query: searchText) }
+                .navigationTitle(LocalizedStringKey("Photos Search"))
+                .navigationBarTitleDisplayMode(.inline)
             }
-        }
-        .onAppear {
-            viewModel.searchMedia(query: "Apple")
-        }
-    }
 }

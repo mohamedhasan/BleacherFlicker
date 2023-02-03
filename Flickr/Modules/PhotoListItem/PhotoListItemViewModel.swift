@@ -13,7 +13,7 @@ class PhotoListItemViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableO
 
     let mediaHandler: MediaHandler
 
-    @Published var thumbnailImage: UIImage = UIImage(named: "placholder") ?? UIImage()
+    @Published var thumbnailImage: UIImage = UIImage(named: "placeholder") ?? UIImage()
     @Published var listModel: FlickrListPhoto
     private var mediaCancellable: AnyCancellable?
     private var imageCancellable: AnyCancellable?
@@ -26,12 +26,13 @@ class PhotoListItemViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableO
 
     func fetchMediaInfo() {
         mediaCancellable = mediaHandler.mediaInfoPublisher(photoId: listModel.id)?.sink(receiveCompletion: { error in
-            //TODO: Handle errors
+            //TODO: Log errors only without stopping user
+            print(error)
         }, receiveValue: { mediaDetails in
             self.allSizes = mediaDetails as? [FlickrPhotoInfo]
             guard let thumbnail = self.allSizes?.filter({ $0.type == .thumbnail }).first else { return }
             self.imageCancellable = thumbnail.imagePublisher?.sink(receiveCompletion: { imageError in
-                //TODO: Handle errors
+                //TODO: Add Reload button for image
                 print(imageError)
             }, receiveValue: {
                 self.thumbnailImage = $0

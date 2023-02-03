@@ -13,12 +13,13 @@ struct PhotoListItem<MediaHandler: MediaAPIHandlerProtocol>: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8.0) {
-            Image(uiImage: viewModel.thumbnailImage).frame(height: 100.0)
-                .padding(4.0)
+            Image(uiImage: viewModel.thumbnailImage)
+                .resizable()
+                .frame(width: 80.0, height: 80.0)
+                .padding(EdgeInsets(top: 4.0, leading: 4.0, bottom: 4.0, trailing: 10.0))
             Text(viewModel.listModel.title)
-        }.onAppear {
-            viewModel.fetchMediaInfo()
         }
+        .frame(height: 100.0)
         .background(
             Rectangle()
                 .fill(.clear)

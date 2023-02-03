@@ -12,6 +12,7 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
     let mediaHandler: MediaHandler
 
     @Published var mediaList: [FlickrListPhoto] = []
+
     let pageSize: Int
     private var cancellable: AnyCancellable?
 
@@ -29,8 +30,10 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
     }
 
     func mediaInfoViewModel(_ photo: FlickrListPhoto) -> PhotoListItemViewModel<MediaHandler> {
-        return PhotoListItemViewModel(
+        let viewModel = PhotoListItemViewModel(
             mediaHandler: mediaHandler,
             listModel: photo)
+        viewModel.fetchMediaInfo()
+        return viewModel
     }
 }
