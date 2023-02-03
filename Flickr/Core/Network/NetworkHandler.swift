@@ -7,10 +7,11 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class NetworkHandler {
-    func performRequest<T: Codable>(_ req: URLRequest, decodeTo: T.Type) -> AnyPublisher<T, Error> {
-        return URLSession.shared.dataTaskPublisher(for: req)
+    func performRequest<T: Codable>(_ request: URLRequest, decodeTo: T.Type) -> AnyPublisher<T, Error> {
+        return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: RunLoop.main)
             .map(\.data)
             .decode(type: T.self, decoder: JSONDecoder())
