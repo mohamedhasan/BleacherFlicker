@@ -9,19 +9,29 @@ import Foundation
 import UIKit
 import Combine
 
-enum FlickrLabel: String {
-    case Original = "Original"
-    case Thumbnail = "Thumbnail"
+enum FlickrLabel: String, Codable {
+    case original = "Original"
+    case thumbnail = "Thumbnail"
+    case unknown = "Unknown"
 }
 
 class FlickrPhotoInfo: Codable, MediaInfoModelProtocol {
 
     let label: String
-    let url: String
-
-    init(label: String, url: String) {
+    let source: String
+    var type: FlickrLabel {
+        get {
+            return FlickrLabel(rawValue: label) ?? .unknown
+        }
+    }
+    var url: String {
+        get {
+            return source
+        }
+    }
+    init(label: String, source: String) {
         self.label = label
-        self.url = url
+        self.source = source
     }
 
 }
@@ -29,9 +39,10 @@ class FlickrPhotoInfo: Codable, MediaInfoModelProtocol {
 extension FlickrPhotoInfo {
     var imagePublisher: AnyPublisher<UIImage, URLError>? {
         get {
-            //TODO: create a custom request with caching
-            guard let url = URL(string: url) else { return nil }
-            let request = URLRequest(url: url)
+            //TODO: replace URLRequest caching with proper Images saving
+            guard let imageURL = URL(string: url) else { return nil }
+            var request = URLRequest(url: imageURL)
+            request.cachePolicy = .returnCacheDataElseLoad
             return ImageDownloader.shared.downloadImagePublisher(request)
         }
     }

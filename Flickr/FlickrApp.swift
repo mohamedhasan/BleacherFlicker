@@ -11,7 +11,8 @@ import SwiftUI
 struct FlickrApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let viewModel = PhotosViewModel(mediaHandler: FlickrPhotosAPIHandler(), pageSize: 5)
+            PhotosView(viewModel: viewModel)
         }
     }
 }

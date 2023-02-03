@@ -8,6 +8,10 @@
 import Foundation
 
 struct FlickrListResponse: Codable {
+    let photos: FlickrListResponseModel
+}
+
+struct FlickrListResponseModel: Codable {
     let page: Int
     let pages: Int
     let perpage: Int

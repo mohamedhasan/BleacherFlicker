@@ -10,7 +10,6 @@ import UIKit
 import Combine
 
 protocol MediaInfoModelProtocol: Identifiable {
-    var label: String { get }
     var url: String { get }
     var imagePublisher: AnyPublisher<UIImage, URLError>? { get }
 }

@@ -11,7 +11,6 @@ import UIKit
 
 class ImageDownloader {
     static let shared = ImageDownloader()
-
     func downloadImagePublisher(_ imageRequest: URLRequest) -> AnyPublisher<UIImage, URLError> {
         return URLSession.shared.dataTaskPublisher(for: imageRequest)
             .receive(on: RunLoop.main)

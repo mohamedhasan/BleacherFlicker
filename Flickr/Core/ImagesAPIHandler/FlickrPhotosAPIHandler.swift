@@ -15,7 +15,7 @@ class FlickrPhotosAPIHandler: MediaAPIHandlerProtocol {
         let networkHandler = NetworkHandler()
         guard let request = searchPhotosRequest(query: query, pageSize: pageSize) else { return nil }
         return networkHandler.performRequest(request, decodeTo: FlickrListResponse.self)
-            .map(\.photo)
+            .map(\.photos.photo)
             .map { return $0 as [any ListMediaModelProtocol] }
             .eraseToAnyPublisher()
     }
