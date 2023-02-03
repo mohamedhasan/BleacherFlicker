@@ -39,4 +39,12 @@ class PhotoListItemViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableO
             })
         })
     }
+
+    func itemDetailsView() -> PhotoDetails<MediaHandler> {
+        let viewModel = PhotoDetailsViewModel(
+            mediaHandler: mediaHandler,
+            photoId: listModel.id)
+        viewModel.fetchMediaInfo()
+        return PhotoDetails<MediaHandler>(viewModel: viewModel)
+    }
 }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PhotoListItem<MediaHandler: MediaAPIHandlerProtocol>: View {
-
+    
     @ObservedObject var viewModel: PhotoListItemViewModel<MediaHandler>
-
+    
     var body: some View {
         HStack(alignment: .center, spacing: 8.0) {
             Image(uiImage: viewModel.thumbnailImage)
@@ -18,6 +18,9 @@ struct PhotoListItem<MediaHandler: MediaAPIHandlerProtocol>: View {
                 .frame(width: 80.0, height: 80.0)
                 .padding(EdgeInsets(top: 4.0, leading: 4.0, bottom: 4.0, trailing: 10.0))
             Text(viewModel.listModel.title)
+            NavigationLink(destination: viewModel.itemDetailsView()) {
+                Text("")
+            }
         }
         .frame(height: 100.0)
         .background(

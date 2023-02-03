@@ -29,7 +29,7 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
         })
     }
 
-    func mediaInfoViewModel(_ photo: FlickrListPhoto) -> PhotoListItemViewModel<MediaHandler> {
+    func itemListViewModel(_ photo: FlickrListPhoto) -> PhotoListItemViewModel<MediaHandler> {
         let viewModel = PhotoListItemViewModel(
             mediaHandler: mediaHandler,
             listModel: photo)
