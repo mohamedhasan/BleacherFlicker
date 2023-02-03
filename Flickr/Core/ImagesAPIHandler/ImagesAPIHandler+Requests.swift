@@ -19,10 +19,11 @@ extension FlickrPhotosAPIHandler {
         return URLRequest(url: url)
     }
 
-    internal func searchPhotosRequest(query: String) -> URLRequest? {
+    internal func searchPhotosRequest(query: String, pageSize: Int) -> URLRequest? {
         guard var request = flickrRequest() else { return nil }
         request.url?.append(queryItems: [
             URLQueryItem(name: "method", value: "flickr.photos.search"),
+            URLQueryItem(name: "per_page", value: "\(pageSize)"),
             URLQueryItem(name: "text", value: query)
         ])
         request.httpMethod = "GET"

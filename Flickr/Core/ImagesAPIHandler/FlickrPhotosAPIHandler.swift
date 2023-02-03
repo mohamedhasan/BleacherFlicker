@@ -11,9 +11,9 @@ import Combine
 class FlickrPhotosAPIHandler: MediaAPIHandlerProtocol {
     let endPoint = "https://www.flickr.com/services/rest/"
 
-    func searchMediaPublisher(query: String) -> AnyPublisher<[any ListMediaModelProtocol]?, Error>? {
+    func searchMediaPublisher(query: String, pageSize: Int) -> AnyPublisher<[any ListMediaModelProtocol]?, Error>? {
         let networkHandler = NetworkHandler()
-        guard let request = searchPhotosRequest(query: query) else { return nil }
+        guard let request = searchPhotosRequest(query: query, pageSize: pageSize) else { return nil }
         return networkHandler.performRequest(request, decodeTo: FlickrListResponse.self)
             .map(\.photo)
             .map { return $0 as [any ListMediaModelProtocol] }
