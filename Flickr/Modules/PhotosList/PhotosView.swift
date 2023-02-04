@@ -28,7 +28,7 @@ struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
                 List {
                     ForEach(viewModel.mediaList) { media in
                         let infoViewModel = viewModel.itemListViewModel(media)
-                        PhotoListItem<MediaHandler>(viewModel: infoViewModel)
+                        PhotoListItem<MediaHandler>(viewModel: infoViewModel).equatable()
                     }
                 }
             }

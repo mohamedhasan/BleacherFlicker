@@ -37,13 +37,10 @@ class FlickrPhotoInfo: Codable, MediaInfoModelProtocol {
 }
 
 extension FlickrPhotoInfo {
-    var imagePublisher: AnyPublisher<UIImage, URLError>? {
-        get {
-            //TODO: replace URLRequest caching with proper Images saving
-            guard let imageURL = URL(string: url) else { return nil }
-            var request = URLRequest(url: imageURL)
-            request.cachePolicy = .returnCacheDataElseLoad
-            return ImageDownloader.shared.downloadImagePublisher(request)
-        }
+    func imagePublisher(mediaID: String) -> AnyPublisher<UIImage, URLError>? {
+        guard let imageURL = URL(string: url) else { return nil }
+        var request = URLRequest(url: imageURL)
+        request.cachePolicy = .returnCacheDataElseLoad
+        return ImageDownloader.shared.downloadImagePublisher(request, mediaID: mediaID, type: label)
     }
 }

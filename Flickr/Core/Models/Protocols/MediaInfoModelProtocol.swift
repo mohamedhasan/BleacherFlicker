@@ -11,5 +11,5 @@ import Combine
 
 protocol MediaInfoModelProtocol: Identifiable {
     var url: String { get }
-    var imagePublisher: AnyPublisher<UIImage, URLError>? { get }
+    func imagePublisher(mediaID: String) -> AnyPublisher<UIImage, URLError>?
 }

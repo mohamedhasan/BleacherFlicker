@@ -33,7 +33,6 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
         let viewModel = PhotoListItemViewModel(
             mediaHandler: mediaHandler,
             listModel: photo)
-        viewModel.fetchMediaInfo()
         return viewModel
     }
 }

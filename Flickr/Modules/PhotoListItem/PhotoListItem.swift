@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-struct PhotoListItem<MediaHandler: MediaAPIHandlerProtocol>: View {
+struct PhotoListItem<MediaHandler: MediaAPIHandlerProtocol>: View, Equatable {
     
     @ObservedObject var viewModel: PhotoListItemViewModel<MediaHandler>
-    
+
+    static func == (lhs: PhotoListItem<MediaHandler>, rhs: PhotoListItem<MediaHandler>) -> Bool {
+        return lhs.viewModel.listModel.id == rhs.viewModel.listModel.id
+    }
+
     var body: some View {
         HStack(alignment: .center, spacing: 8.0) {
             Image(uiImage: viewModel.thumbnailImage)
@@ -21,6 +25,9 @@ struct PhotoListItem<MediaHandler: MediaAPIHandlerProtocol>: View {
             NavigationLink(destination: viewModel.itemDetailsView()) {
                 Text("")
             }
+        }
+        .onAppear {
+            viewModel.fetchMediaInfo()
         }
         .frame(height: 100.0)
         .background(

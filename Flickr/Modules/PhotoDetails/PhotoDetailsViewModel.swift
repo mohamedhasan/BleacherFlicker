@@ -28,15 +28,13 @@ class PhotoDetailsViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableOb
     func fetchMediaInfo() {
         mediaCancellable = mediaHandler.mediaInfoPublisher(photoId: photoId)?.sink(receiveCompletion: { error in
             //TODO: Log errors only without stopping user
-            print(error)
-        }, receiveValue: { mediaDetails in
-            self.allSizes = mediaDetails as? [FlickrPhotoInfo]
-            guard let thumbnail = self.allSizes?.filter({ $0.type == .original }).first else { return }
-            self.imageCancellable = thumbnail.imagePublisher?.sink(receiveCompletion: { imageError in
+        }, receiveValue: { [weak self] mediaDetails in
+            self?.allSizes = mediaDetails as? [FlickrPhotoInfo]
+            guard let thumbnail = self?.allSizes?.filter({ $0.type == .original }).first else { return }
+            self?.imageCancellable = thumbnail.imagePublisher(mediaID: self?.photoId ?? "")?.sink(receiveCompletion: { imageError in
                 //TODO: Add Reload button for image
-                print(imageError)
             }, receiveValue: {
-                self.fullImage = $0
+                self?.fullImage = $0
             })
         })
     }
