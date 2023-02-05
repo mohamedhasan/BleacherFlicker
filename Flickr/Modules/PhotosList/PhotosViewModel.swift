@@ -13,6 +13,7 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
 
     @Published var mediaList: [FlickrListPhoto] = []
     @Published var suggestions: [String] = []
+    @Published var isSearching: Bool = false
 
     let pageSize: Int
     //TODO: APIs might differ in first page num (0 or 1).
@@ -44,16 +45,20 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
         })
     }
 
+    //TODO: validate search input (ex: empty spaces).
     func searchMedia(query: String) {
         guard !query.isEmpty else { return }
         currentQuery = query
         page = 0
-        cancellable = mediaHandler.searchMediaPublisher(query: query, pageSize: pageSize, page: page)?.sink(receiveCompletion: { error in
+        isSearching = true
+        cancellable = mediaHandler.searchMediaPublisher(query: query, pageSize: pageSize, page: page)?.sink(receiveCompletion: { [weak self] error in
             //TODO: Handle errors
+            self?.isSearching = false
         }, receiveValue: { [weak self] response in
             self?.mediaList = response?.items as? [FlickrListPhoto] ?? []
             self?.page = response?.page ?? 1
             self?.totalPages = response?.totalPages
+            self?.isSearching = false
         })
         fetchSuggestions()
     }

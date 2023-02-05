@@ -23,11 +23,13 @@ struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
                         PhotoListItem<MediaHandler>(viewModel: infoViewModel).equatable()
                     }
                     if viewModel.hasMoreRows {
-                        ProgressView()
-                            .onAppear {
-                                viewModel.page += 1
-                                viewModel.loadPage(pageNumber: viewModel.page + 1)
-                            }
+                        HStack {
+                            Text("Loading more results...")
+                                .onAppear {
+                                    viewModel.page += 1
+                                    viewModel.loadPage(pageNumber: viewModel.page + 1)
+                                }
+                        }
                     }
                 }
             }
@@ -46,5 +48,15 @@ struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
         .onSubmit(of: .search, {
             viewModel.searchMedia(query: searchText)
         })
+        .overlay {
+            if viewModel.isSearching {
+                ProgressView()
+            }
+            if viewModel.mediaList.isEmpty && !viewModel.isSearching {
+                Text("Please enter a valid search query")
+                    .font(.callout)
+                    .fontWeight(.heavy)
+            }
+        }
     }
 }
