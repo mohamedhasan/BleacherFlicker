@@ -11,7 +11,19 @@ struct FlickrListResponse: Codable {
     let photos: FlickrListResponseModel
 }
 
-struct FlickrListResponseModel: Codable {
+struct FlickrListResponseModel: Codable, MediaListProtocol {
+    var totalPages: Int {
+        get {
+            return pages
+        }
+    }
+
+    var items: [any ListMediaModelProtocol] {
+        get {
+            return photo
+        }
+    }
+
     let page: Int
     let pages: Int
     let perpage: Int

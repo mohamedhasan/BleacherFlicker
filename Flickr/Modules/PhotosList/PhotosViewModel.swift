@@ -15,6 +15,17 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
     @Published var suggestions: [String] = []
 
     let pageSize: Int
+    //TODO: APIs might differ in first page num (0 or 1).
+    var page: Int = 1
+    private var totalPages: Int? = 1
+    private var currentQuery = ""
+
+    var hasMoreRows: Bool {
+        get {
+            guard let totalPages = totalPages, !mediaList.isEmpty else { return false }
+            return page < totalPages
+        }
+    }
     private var cancellable: AnyCancellable?
     private var suggestionsCancellable: AnyCancellable?
 
@@ -34,10 +45,28 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
     }
 
     func searchMedia(query: String) {
-        cancellable = mediaHandler.searchMediaPublisher(query: query, pageSize: pageSize)?.sink(receiveCompletion: { error in
+        guard !query.isEmpty else { return }
+        currentQuery = query
+        page = 0
+        cancellable = mediaHandler.searchMediaPublisher(query: query, pageSize: pageSize, page: page)?.sink(receiveCompletion: { error in
             //TODO: Handle errors
-        }, receiveValue: { photos in
-            self.mediaList = photos as? [FlickrListPhoto] ?? []
+        }, receiveValue: { [weak self] response in
+            self?.mediaList = response?.items as? [FlickrListPhoto] ?? []
+            self?.page = response?.page ?? 1
+            self?.totalPages = response?.totalPages
+        })
+        fetchSuggestions()
+    }
+
+    func loadPage(pageNumber: Int) {
+        guard !currentQuery.isEmpty else { return }
+        page = pageNumber
+        cancellable = mediaHandler.searchMediaPublisher(query: currentQuery, pageSize: pageSize, page: page)?.sink(receiveCompletion: { error in
+            //TODO: Handle errors
+        }, receiveValue: { [weak self] response in
+            self?.mediaList.append(contentsOf: response?.items as? [FlickrListPhoto] ?? [])
+            self?.page = response?.page ?? 1
+            self?.totalPages = response?.totalPages
         })
         fetchSuggestions()
     }

@@ -22,6 +22,13 @@ struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
                         let infoViewModel = viewModel.itemListViewModel(media)
                         PhotoListItem<MediaHandler>(viewModel: infoViewModel).equatable()
                     }
+                    if viewModel.hasMoreRows {
+                        ProgressView()
+                            .onAppear {
+                                viewModel.page += 1
+                                viewModel.loadPage(pageNumber: viewModel.page + 1)
+                            }
+                    }
                 }
             }
             .searchable(text: $searchText, prompt: "Search for photos ...", suggestions: {

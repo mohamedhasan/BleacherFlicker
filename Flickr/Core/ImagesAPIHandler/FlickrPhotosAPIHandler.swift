@@ -21,6 +21,16 @@ class FlickrPhotosAPIHandler: MediaAPIHandlerProtocol {
             .eraseToAnyPublisher()
     }
 
+    func searchMediaPublisher(query: String, pageSize: Int, page: Int) -> AnyPublisher<FlickrListResponseModel?, Error>? {
+        SuggestionsHandler.shared.saveSearchQuery(query)
+        let networkHandler = NetworkHandler()
+        guard let request = searchPhotosRequest(query: query, pageSize: pageSize, page: page) else { return nil }
+        return networkHandler.performRequest(request, decodeTo: FlickrListResponse.self)
+            .map(\.photos)
+            .map { return $0 as FlickrListResponseModel }
+            .eraseToAnyPublisher()
+    }
+
     func mediaInfoPublisher(photoId: String) -> AnyPublisher<[any MediaInfoModelProtocol]?, Error>? {
         let networkHandler = NetworkHandler()
         guard let request = photoInfoRequest(photoId: photoId) else { return nil }

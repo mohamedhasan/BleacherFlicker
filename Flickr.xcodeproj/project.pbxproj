@@ -32,6 +32,7 @@
 		E1DAAADD298DA9A000FFE1A7 /* PhotoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAADC298DA9A000FFE1A7 /* PhotoDetails.swift */; };
 		E1DAAADF298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAADE298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift */; };
 		E1DAAAE1298F292A00FFE1A7 /* SuggestionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAAE0298F292A00FFE1A7 /* SuggestionsHandler.swift */; };
+		E1DAAAE3298FCDBA00FFE1A7 /* MediaListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAAE2298FCDBA00FFE1A7 /* MediaListProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E1DAAADC298DA9A000FFE1A7 /* PhotoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetails.swift; sourceTree = "<group>"; };
 		E1DAAADE298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewModel.swift; sourceTree = "<group>"; };
 		E1DAAAE0298F292A00FFE1A7 /* SuggestionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsHandler.swift; sourceTree = "<group>"; };
+		E1DAAAE2298FCDBA00FFE1A7 /* MediaListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 			children = (
 				E1DAAABA298C0EF200FFE1A7 /* ListMediaModelProtocol.swift */,
 				E1DAAABD298C0F1400FFE1A7 /* MediaInfoModelProtocol.swift */,
+				E1DAAAE2298FCDBA00FFE1A7 /* MediaListProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				E1DAAADB298D8A5500FFE1A7 /* AppDesign.swift in Sources */,
 				E1DAAABE298C0F1400FFE1A7 /* MediaInfoModelProtocol.swift in Sources */,
 				E1DAAAD4298D24B300FFE1A7 /* PhotosView.swift in Sources */,
+				E1DAAAE3298FCDBA00FFE1A7 /* MediaListProtocol.swift in Sources */,
 				E1DAAADF298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift in Sources */,
 				E1DAAAD9298D31CE00FFE1A7 /* PhotoListItemViewModel.swift in Sources */,
 				E1DAAAB7298BFF5100FFE1A7 /* MediaAPIHandlerProtocol.swift in Sources */,
