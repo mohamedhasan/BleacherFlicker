@@ -12,13 +12,25 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
     let mediaHandler: MediaHandler
 
     @Published var mediaList: [FlickrListPhoto] = []
+    @Published var suggestions: [String] = []
 
     let pageSize: Int
     private var cancellable: AnyCancellable?
+    private var suggestionsCancellable: AnyCancellable?
 
     init(mediaHandler: MediaHandler, pageSize: Int) {
         self.mediaHandler = mediaHandler
         self.pageSize = pageSize
+        self.fetchSuggestions()
+    }
+
+    func fetchSuggestions() {
+        suggestions = []
+        suggestionsCancellable = mediaHandler.fetchSuggestionsPublisher()?.reduce(suggestions, { suggestions, value in
+            return suggestions + [value]
+        }).sink(receiveValue: { suggestions in
+            self.suggestions = suggestions
+        })
     }
 
     func searchMedia(query: String) {
@@ -27,6 +39,7 @@ class PhotosViewModel<MediaHandler: MediaAPIHandlerProtocol>: ObservableObject {
         }, receiveValue: { photos in
             self.mediaList = photos as? [FlickrListPhoto] ?? []
         })
+        fetchSuggestions()
     }
 
     func itemListViewModel(_ photo: FlickrListPhoto) -> PhotoListItemViewModel<MediaHandler> {

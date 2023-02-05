@@ -17,14 +17,6 @@ struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                HStack {
-                    TextField(LocalizedStringKey("Type to search..."), text: $searchText)
-                        .padding(8)
-                        .cornerRadius(4)
-                        .background(.blue)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .submitLabel(.search)
-                }
                 List {
                     ForEach(viewModel.mediaList) { media in
                         let infoViewModel = viewModel.itemListViewModel(media)
@@ -32,10 +24,20 @@ struct PhotosView<MediaHandler: MediaAPIHandlerProtocol>: View {
                     }
                 }
             }
-            .onSubmit
-            { viewModel.searchMedia(query: searchText) }
-                .navigationTitle(LocalizedStringKey("Photos Search"))
-                .navigationBarTitleDisplayMode(.inline)
+            .searchable(text: $searchText, prompt: "Search for photos ...", suggestions: {
+                ForEach(
+                  viewModel.suggestions,
+                    id: \.self
+                ) { suggestion in
+                  Text(suggestion)
+                    .searchCompletion(suggestion)
+                }
+            })
+            .navigationTitle(LocalizedStringKey("Photos Search"))
+            .navigationBarTitleDisplayMode(.inline)
         }
+        .onSubmit(of: .search, {
+            viewModel.searchMedia(query: searchText)
+        })
     }
 }

@@ -31,6 +31,7 @@
 		E1DAAADB298D8A5500FFE1A7 /* AppDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAADA298D8A5500FFE1A7 /* AppDesign.swift */; };
 		E1DAAADD298DA9A000FFE1A7 /* PhotoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAADC298DA9A000FFE1A7 /* PhotoDetails.swift */; };
 		E1DAAADF298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAADE298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift */; };
+		E1DAAAE1298F292A00FFE1A7 /* SuggestionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAAAE0298F292A00FFE1A7 /* SuggestionsHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		E1DAAADA298D8A5500FFE1A7 /* AppDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDesign.swift; sourceTree = "<group>"; };
 		E1DAAADC298DA9A000FFE1A7 /* PhotoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetails.swift; sourceTree = "<group>"; };
 		E1DAAADE298DAB7F00FFE1A7 /* PhotoDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewModel.swift; sourceTree = "<group>"; };
+		E1DAAAE0298F292A00FFE1A7 /* SuggestionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				E1DAAAB6298BFF5100FFE1A7 /* MediaAPIHandlerProtocol.swift */,
 				E1DAAAB8298BFF5F00FFE1A7 /* FlickrPhotosAPIHandler.swift */,
 				E1DAAACD298D1CE100FFE1A7 /* ImagesAPIHandler+Requests.swift */,
+				E1DAAAE0298F292A00FFE1A7 /* SuggestionsHandler.swift */,
 			);
 			path = ImagesAPIHandler;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				E1DAAACE298D1CE100FFE1A7 /* ImagesAPIHandler+Requests.swift in Sources */,
 				E1DAAADD298DA9A000FFE1A7 /* PhotoDetails.swift in Sources */,
 				E1DAAAB9298BFF5F00FFE1A7 /* FlickrPhotosAPIHandler.swift in Sources */,
+				E1DAAAE1298F292A00FFE1A7 /* SuggestionsHandler.swift in Sources */,
 				E1DAAAB5298BFB1600FFE1A7 /* NetworkHandler.swift in Sources */,
 				E1DAAAC3298C126E00FFE1A7 /* FlickrPhotoInfo.swift in Sources */,
 				E1DAAAD6298D2FFF00FFE1A7 /* PhotoListItem.swift in Sources */,

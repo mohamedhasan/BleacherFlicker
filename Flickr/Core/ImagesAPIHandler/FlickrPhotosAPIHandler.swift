@@ -12,6 +12,7 @@ class FlickrPhotosAPIHandler: MediaAPIHandlerProtocol {
     let endPoint = "https://www.flickr.com/services/rest/"
 
     func searchMediaPublisher(query: String, pageSize: Int) -> AnyPublisher<[any ListMediaModelProtocol]?, Error>? {
+        SuggestionsHandler.shared.saveSearchQuery(query)
         let networkHandler = NetworkHandler()
         guard let request = searchPhotosRequest(query: query, pageSize: pageSize) else { return nil }
         return networkHandler.performRequest(request, decodeTo: FlickrListResponse.self)
@@ -27,5 +28,9 @@ class FlickrPhotosAPIHandler: MediaAPIHandlerProtocol {
             .map(\.sizes.size)
             .map { return $0 as [any MediaInfoModelProtocol] }
             .eraseToAnyPublisher()
+    }
+
+    func fetchSuggestionsPublisher() -> AnyPublisher<String, Never>? {
+        return SuggestionsHandler.shared.getSavedQueries()
     }
 }
